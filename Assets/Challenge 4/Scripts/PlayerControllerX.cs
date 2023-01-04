@@ -8,6 +8,7 @@ public class PlayerControllerX : MonoBehaviour
     private float speed = 500;
     private GameObject focalPoint;
 
+    public ParticleSystem smokeParticle;
     public bool hasPowerup;
     public GameObject powerupIndicator;
     public int powerUpDuration = 5;
@@ -30,6 +31,17 @@ public class PlayerControllerX : MonoBehaviour
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            speed = 1000;
+            smokeParticle.Play();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            speed = 500;
+            smokeParticle.Stop();
+        }
     }
 
     // If Player collides with powerup, activate powerup
