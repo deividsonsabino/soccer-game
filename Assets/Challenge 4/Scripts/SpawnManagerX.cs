@@ -25,6 +25,7 @@ public class SpawnManagerX : MonoBehaviour
         if (enemyCount == 0)
         {
             enemyCount++;
+            enemyPrefab.GetComponent<EnemyX>().speed += waveCount;
             SpawnEnemyWave(waveCount);
         }
 
